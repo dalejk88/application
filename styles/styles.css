@@ -1,7 +1,24 @@
-.spacer {
+.head {
+    padding-top: 20px;
+}
+
+.body {
+    background-color: rgb(236, 236, 236)
+}
+
+hr {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.spac {
     border-bottom-style: inset;
     padding-top: 10px;
     padding-bottom: 20px;
+}
+
+img {
+    border-radius: 10px;
 }
 
 /* W3Schools CSS Navbar*/
