@@ -12,12 +12,14 @@ session_start();
 
 // Require autoload file
 require_once('vendor/autoload.php');
+require_once('model/data-layer.php');
+require_once('model/validate.php');
 
-//Insantiate F3 Base class
+//Instantiate F3 Base class
 $f3 = Base::instance();
 
-// Define a default route (328/home)
-$f3->route('GET /', function(){
+// Define a default route (328/application/home)
+$f3->route('GET /', function() {
     // Instantiate a view
     $view = new Template();
     echo $view->render("views/home.html");
@@ -25,10 +27,19 @@ $f3->route('GET /', function(){
 
 // Define information route
 // start of application route
-$f3->route('GET /information', function() {
+$f3->route('GET /info', function() {
     // Instantiate a view
     $view = new Template();
     echo $view->render("views/information.html");
+});
+
+//Define an experience route (328/application/experience)
+$f3->route('GET /experience', function($f3) {
+
+    //Instantiate a view
+    $view = new Template();
+    echo $view->render("views/experience.html");
+
 });
 
 // Run Fat Free
