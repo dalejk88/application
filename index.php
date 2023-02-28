@@ -12,7 +12,6 @@ session_start();
 
 // Require autoload file
 require_once('vendor/autoload.php');
-require_once('model/data-layer.php');
 require_once('model/validate.php');
 
 //Instantiate F3 Base class
@@ -26,7 +25,6 @@ $f3->route('GET /', function() {
 });
 
 // Define information route
-// start of application route
 $f3->route('GET /info', function() {
     // Instantiate a view
     $view = new Template();
