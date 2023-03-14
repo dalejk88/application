@@ -40,5 +40,12 @@ $f3->route('GET /experience', function($f3) {
 
 });
 
+// Define mailing route (328/application/mailing)
+$f3->route('GET /mailing', function() {
+    // Instantiate a view
+    $view = new Template();
+    echo $view->render("views/mailing.html");
+});
+
 // Run Fat Free
 $f3->run();
