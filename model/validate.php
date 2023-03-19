@@ -19,6 +19,7 @@ function validGithub($github)
 function validExperience($experience)
 {
     if (is_string($experience)) return true;
+    else return false;
 }
 
 //Return true if string is a valid phone number (numeric)
@@ -28,9 +29,10 @@ function validPhone($phone)
 }
 
 //Return true if email is valid
-function validEmail($phone)
+function validEmail($email)
 {
-
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) return true;
+    else return false;
 }
 
 //Checks each selected jobs checkbox selection against a list of valid options
