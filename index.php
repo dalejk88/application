@@ -17,18 +17,19 @@ require_once('model/validate.php');
 //Instantiate F3 Base class
 $f3 = Base::instance();
 
+//Instantiate a Controller and DataLayer object
+$con = new Controller($f3);
+//$datalayer = new DataLayer();
+
 // Define a default route (328/application/home)
 $f3->route('GET /', function() {
-    // Instantiate a view
-    $view = new Template();
-    echo $view->render("views/home.html");
+
+    $GLOBALS['con']->home();
 });
 
 // Define information route
 $f3->route('GET /info', function() {
-    // Instantiate a view
-    $view = new Template();
-    echo $view->render("views/information.html");
+    $GLOBALS['con']->info();
 });
 
 //Define an experience route (328/application/experience)
