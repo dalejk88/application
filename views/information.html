@@ -10,29 +10,39 @@
         <h4>Green River Corn Dogs</h4>
         <p>Auburn Washington, Unpaid, 17.5 weeks</p>
     </div>
-    <form class="body">
+    <form class="body" action="#" method="post">
         <div class="p-3 m-3">
             <h1 class="spacer">Personal Information</h1>
             <div class="row">
                 <div class="col-12 col-md-8">
                     <div class="row row-cols-md-2">
+                        <!--First Name-->
                         <div class="form-group">
                             <label class="form-label" for="fname">First Name</label>
-                            <input type="text" class="form-control" id="fname" placeholder="Sarah" required>
+                            <input type="text" class="form-control" name="fname" id="fname" placeholder="Sarah" required>
+                            <check if="{{ isset(@errors['fname'])}}">
+                                <span class="err">{{ @errors['fname'] }}</span>
+                            </check>
                         </div>
+                        <!--Last Name-->
                         <div class="form-group">
                             <label class="form-label" for="lname">Last Name</label>
-                            <input type="text" class="form-control" id="lname" placeholder="Smith" required>
+                            <input type="text" class="form-control" name="lname" id="lname" placeholder="Smith" required>
+                            <check if="{{ isset(@errors['lname'])}}">
+                                <span class="err">{{ @errors['lname'] }}</span>
+                            </check>
                         </div>
                     </div>
+                    <!--Email-->
                     <div class="form-group">
                         <label class="form-label" for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="my_email@gmail.com" required>
+                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="my_email@gmail.com" required>
                     </div>
                     <div class="row row-cols-md-2">
+                        <!--State-->
                         <div class="form-group">
                             <label class="form-label"  for="inputState">State</label>
-                            <select id="inputState" class="form-control">
+                            <select name="inputState" id="inputState" class="form-control">
                                 <option selected>Choose...</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
@@ -87,14 +97,16 @@
                                 <option value="WY">Wyoming</option>
                             </select>
                         </div>
+                        <!--Phone-->
                         <div class="form-group">
                             <label class="form-label" for="phone">Phone</label>
-                            <input type="text" id="phone" class="form-control" data-mdb-input-mask="+48 999-999-999" required/>
+                            <input type="text" name="phone" id="phone" class="form-control" data-mdb-input-mask="+48 999-999-999" required/>
                         </div>
                     </div>
+                    <!--Mailing Lists-->
                     <div class="form-group">
                         <label class="form-label" for="lists">Mailing Lists</label><br>
-                        <input type="checkbox" id="lists" name="lists" value="signup">
+                        <input type="checkbox" name="lists" id="lists" value="signup">
                         <label for="lists">Sign me up for job openings mailing lists!</label>
                     </div>
                 </div>

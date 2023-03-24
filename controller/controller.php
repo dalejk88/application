@@ -20,14 +20,22 @@ class Controller
 
     function info()
     {
+        echo '<pre>';
+        Print_r ($_SESSION);
+        echo '</pre>';
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $newApplicant = new Applicant();
+            print_r($_POST);
+            // instantiate a new input order
+            if(!empty($_POST['lists'])) {
+                $newApplicant = new Applicant_SubscribedToLists();
+            } else {
+                $newApplicant = new Applicant();
+            }
 
             // Validate fname
             $fname = trim($_POST['fname']);
-            if (Validate::validFood($fname)) {
+            if (Validate::validName($fname)) {
                 $newApplicant->setFname($fname);
             }
             else {
@@ -46,7 +54,7 @@ class Controller
             }
 
             //Validate email
-            $email = $_POST['email'];
+            $email = trim($_POST['email']);
             if (Validate::validEmail($email)) {
                 $newApplicant->setEmail($email);
             }
@@ -70,5 +78,16 @@ class Controller
         $view = new Template();
         echo $view->render("views/information.html");
 
+    }
+
+    function experience()
+    {
+        echo '<pre>';
+        Print_r ($_SESSION);
+        echo '</pre>';
+
+        //Instantiate a view
+        $view = new Template();
+        echo $view->render("views/experience.html");
     }
 }

@@ -8,8 +8,8 @@
 
 class Applicant_SubscribedToLists extends Applicant
 {
-    private $_selectionsJobs = array();
-    private $_selectionsVerticals = array();
+    private array $_jobs = array();
+    private array $_verticals = array();
 
     /**
      * getSelectionsJobs returns an array of the Applicant's selected jobs
@@ -17,16 +17,16 @@ class Applicant_SubscribedToLists extends Applicant
      */
     public function getSelectionsJobs()
     {
-        return $this->_selectionsJobs;
+        return $this->_jobs;
     }
 
     /**
      * setSelectionsJobs sets an array of the Applicant's selected jobs
      * @param array
      */
-    public function setSelectionsJobs($selectionsJobs)
+    public function setSelectionsJobs($jobs)
     {
-        $this->_selectionsJobs = $selectionsJobs;
+        $this->_jobs = $jobs;
     }
 
     /**
@@ -35,15 +35,15 @@ class Applicant_SubscribedToLists extends Applicant
      */
     public function getSelectionsVerticals()
     {
-        return $this->_selectionsVerticals;
+        return $this->_verticals;
     }
 
     /**
      * setSelectionsJobs sets an array of the Applicant's selected verticals
      * @param array
      */
-    public function setSelectionsVerticals($selectionsVerticals)
+    public function setSelectionsVerticals($verticals)
     {
-        $this->_selectionsJobs = $selectionsVerticals;
+        $this->_verticals = $verticals;
     }
 }

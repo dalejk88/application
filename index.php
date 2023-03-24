@@ -23,26 +23,21 @@ $con = new Controller($f3);
 
 // Define a default route (328/application/home)
 $f3->route('GET /', function() {
-
     $GLOBALS['con']->home();
 });
 
 // Define information route
-$f3->route('GET /info', function() {
+$f3->route('GET|POST /info', function() {
     $GLOBALS['con']->info();
 });
 
 //Define an experience route (328/application/experience)
-$f3->route('GET /experience', function($f3) {
-
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/experience.html");
-
+$f3->route('GET|POST /experience', function() {
+    $GLOBALS['con']->experience();
 });
 
 // Define mailing route (328/application/mailing)
-$f3->route('GET /mailing', function() {
+$f3->route('GET|POST /mailing', function() {
     // Instantiate a view
     $view = new Template();
     echo $view->render("views/mailing.html");
