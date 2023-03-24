@@ -23,33 +23,43 @@ class Controller
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $newOrder = new Order();
+            $newApplicant = new Applicant();
 
-            //Move food from POST array to SESSION array
-            $food = trim($_POST['food']);
-            if (Validate::validFood($food)) {
-                $newOrder->setFood($food);
+            // Validate fname
+            $fname = trim($_POST['fname']);
+            if (Validate::validFood($fname)) {
+                $newApplicant->setFname($fname);
             }
             else {
-                $this->_f3->set('errors["food"]',
-                    'Food must have at least 2 chars');
+                $this->_f3->set('errors["fname"]',
+                    'Name must be all alphabetic');
             }
 
-            //Validate the meal
-            $meal = $_POST['meal'];
-            if (Validate::validMeal($meal)) {
-                $newOrder->setMeal($meal);
+            // Validate lname
+            $lname = trim($_POST['lname']);
+            if (Validate::validName($lname)) {
+                $newApplicant->setLname($lname);
             }
             else {
-                $this->_f3->set('errors["meal"]',
-                    'Meal is invalid');
+                $this->_f3->set('errors["lname"]',
+                    'Name must be all alphabetic');
             }
 
-            //Redirect to summary page
+            //Validate email
+            $email = $_POST['email'];
+            if (Validate::validEmail($email)) {
+                $newApplicant->setEmail($email);
+            }
+            else {
+                $this->_f3->set('errors["email"]',
+                    'Email is invalid');
+            }
+
+            //Redirect to experience page
             //if there are no errors
             if (empty($this->_f3->get('errors'))) {
-                $_SESSION['newOrder'] = $newOrder;
-                $this->_f3->reroute('order2');
+                $_SESSION['newApplicant'] = $newApplicant;
+                $this->_f3->reroute('experience');
             }
         }
 
