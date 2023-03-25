@@ -73,6 +73,8 @@ class Controller
                     'Phone number must be numeric');
             }
 
+            $newApplicant->setState($_POST['state']);
+
             //Redirect to experience page
             //if there are no errors
             if (empty($this->_f3->get('errors'))) {

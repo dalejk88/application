@@ -12,7 +12,13 @@
     </div>
     <form class="body">
         <div class="p-3 m-3">
-            <p>Name: {{@SESSION.newApplicant->getfname() }} {{@SESSION.newApplicant->getlname()}} </p>
+            <p>Name: {{@SESSION.newApplicant->getFname() }} {{@SESSION.newApplicant->getLname()}} </p>
+            <p>Email: {{@SESSION.newApplicant->getEmail() }}</p>
+            <p>State: {{@SESSION.newApplicant->getState() }}</p>
+            <p>Phone: {{@SESSION.newApplicant->getPhone() }}</p>
+            <p>Github Link: {{@SESSION.newApplicant->getGithub() }}</p>
+            <p>Experience: {{@SESSION.newApplicant->getExperience() }} Years</p>
+            <p>Willing to Relocate: {{@SESSION.newApplicant->getRelocate() }}</p>
         </div>
     </form>
 </div>
