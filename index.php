@@ -42,5 +42,10 @@ $f3->route('GET|POST /mailing', function() {
     $GLOBALS['con']->mailing();
 });
 
+// Define summary route (328/application/summary)
+$f3->route('GET|POST /summary', function() {
+    $GLOBALS['con']->summary();
+});
+
 // Run Fat Free
 $f3->run();

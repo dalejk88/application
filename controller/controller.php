@@ -100,7 +100,7 @@ class Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $_SESSION['newApplicant']->setBio($_POST['bio']);
-            $_SESSION['newApplicant']->setRelocate($_POST['bio']);
+            $_SESSION['newApplicant']->setRelocate($_POST['relocate']);
 
             // Validate github
             $github = trim($_POST['github']);
@@ -136,15 +136,16 @@ class Controller
 
     function mailing()
     {
+        echo '<pre>';
+        Print_r ($_SESSION);
+        echo '</pre>';
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $condString = isset($_POST['jobs']) ?
-                implode(", ", $_POST['jobs']) : "";
+            $condString = $_POST['jobs'];
             $_SESSION['newApplicant']->setSelectionsJobs($condString);
 
-            $condString = isset($_POST['verticals']) ?
-                implode(", ", $_POST['verticals']) : "";
+            $condString = $_POST['verticals'];
             $_SESSION['newApplicant']->setSelectionsVerticals($condString);
 
             //Redirect to summary page
@@ -161,5 +162,16 @@ class Controller
         // Instantiate a view
         $view = new Template();
         echo $view->render("views/mailing.html");
+    }
+
+    function summary()
+    {
+        echo '<pre>';
+        Print_r($_SESSION);
+        echo '</pre>';
+
+        // Instantiate a view
+        $view = new Template();
+        echo $view->render("views/summary.html");
     }
 }

@@ -1,0 +1,19 @@
+<include href="views/header.html"></include>
+
+<body>
+<div class="container">
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a class="apply" href="info">Apply Now!</a>
+    </div>
+    <div class="head">
+        <h4>Green River Corn Dogs</h4>
+        <p>Auburn Washington, Unpaid, 17.5 weeks</p>
+    </div>
+    <form class="body">
+        <div class="p-3 m-3">
+            <p>Name: {{@SESSION.newApplicant->getfname() }} {{@SESSION.newApplicant->getlname()}} </p>
+        </div>
+    </form>
+</div>
+</body>

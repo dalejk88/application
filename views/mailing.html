@@ -10,14 +10,14 @@
         <h4>Green River Corn Dogs</h4>
         <p>Auburn Washington, Unpaid, 17.5 weeks</p>
     </div>
-    <form class="body">
+    <form class="body" action="#" method="post">
         <div class="p-3 m-3">
             <h1 class="spacer">Job Openings Mailing Lists</h1>
             <div class="row">
                 <label class="form-label">Software Development Jobs</label><br>
                 <repeat group="{{ @jobs }}" value="{{ @job }}">
                     <div class="col-md-3 col-sm-6 col-12">
-                        <label><input type="checkbox" name="jobs" value="{{ @job }}"> {{ ucfirst(@job) }}</label><br>
+                        <label><input type="checkbox" name="jobs[]" value="{{ @job }}"> {{ ucfirst(@job) }}</label><br>
                     </div>
                 </repeat>
             </div>
@@ -25,7 +25,7 @@
                 <label class="form-label">Industry Verticals</label><br>
                 <repeat group="{{ @verticals }}" value="{{ @vertical }}">
                     <div class="col-md-3 col-sm-6 col-12">
-                        <label><input type="checkbox" name="verticals" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}</label><br>
+                        <label><input type="checkbox" name="verticals[]" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}</label><br>
                     </div>
                 </repeat>
             </div>
