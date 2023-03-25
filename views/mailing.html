@@ -15,65 +15,19 @@
             <h1 class="spacer">Job Openings Mailing Lists</h1>
             <div class="row">
                 <label class="form-label">Software Development Jobs</label><br>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="javascript" name="javascript" value="JavaScript">
-                    <label for="javascript"> JavaScript</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="php" name="php" value="PHP">
-                    <label for="php"> PHP</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="java" name="java" value="Java">
-                    <label for="java"> Java</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="python" name="python" value="Python">
-                    <label for="python"> Python</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="html" name="html" value="HTML">
-                    <label for="html"> HTML</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="css" name="css" value="CSS">
-                    <label for="css"> CSS</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="reactjs" name="reactjs" value="ReactJS">
-                    <label for="reactjs"> ReactJS</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="nodejs" name="nodejs" value="NodeJS">
-                    <label for="nodejs"> NodeJS</label>
-                </div>
+                <repeat group="{{ @jobs }}" value="{{ @job }}">
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <label><input type="checkbox" name="jobs" value="{{ @job }}"> {{ ucfirst(@job) }}</label><br>
+                    </div>
+                </repeat>
             </div>
             <div class="row">
                 <label class="form-label">Industry Verticals</label><br>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="saas" name="saas" value="SaaS">
-                    <label for="saas"> SaaS</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="healthtech" name="healthtech" value="Health tech">
-                    <label for="healthtech"> Health tech</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="agtech" name="agtech" value="Ag tech">
-                    <label for="agtech"> Ag tech</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="hrtech" name="hrtech" value="HR tech">
-                    <label for="hrtech"> HR tech</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="industrialtech" name="industrialtech" value="Industrial tech">
-                    <label for="industrialtech"> Industrial tech</label>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12">
-                    <input type="checkbox" id="cybersecurity" name="cybersecurity" value="Cybersecurity">
-                    <label for="cybersecurity"> Cybersecurity</label>
-                </div>
+                <repeat group="{{ @verticals }}" value="{{ @vertical }}">
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <label><input type="checkbox" name="verticals" value="{{ @vertical }}"> {{ ucfirst(@vertical) }}</label><br>
+                    </div>
+                </repeat>
             </div>
             <button type="submit" class="btn btn-primary w-100">Next ></button>
         </div>

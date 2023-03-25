@@ -7,12 +7,13 @@ ini_set('display_errors', 1);
 // Error reporting level
 error_reporting(E_ALL);
 
-// Start a session
-session_start();
-
 // Require autoload file
 require_once('vendor/autoload.php');
 require_once('model/validate.php');
+
+// Start a session
+session_start();
+//session_destroy();
 
 //Instantiate F3 Base class
 $f3 = Base::instance();
@@ -38,9 +39,7 @@ $f3->route('GET|POST /experience', function() {
 
 // Define mailing route (328/application/mailing)
 $f3->route('GET|POST /mailing', function() {
-    // Instantiate a view
-    $view = new Template();
-    echo $view->render("views/mailing.html");
+    $GLOBALS['con']->mailing();
 });
 
 // Run Fat Free

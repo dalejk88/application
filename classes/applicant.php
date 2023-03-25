@@ -171,7 +171,6 @@ class Applicant
         $this->_relocate = $relocate;
     }
 
-    //bio
     /**
      * getBio returns the bio the Applicant submitted
      * @return string

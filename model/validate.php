@@ -13,7 +13,7 @@ class Validate
     static function validGithub($github)
     {
         if (strlen($github) < 19) return false;
-        if (substr($github, 0, 18) == "https://github.com/") return true;
+        else if (str_starts_with($github, "https://github.com/")) return true;
         else return false;
     }
 

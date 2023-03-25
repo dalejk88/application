@@ -21,7 +21,7 @@
                             <label class="form-label" for="fname">First Name</label>
                             <input type="text" class="form-control" name="fname" id="fname" placeholder="Sarah" required>
                             <check if="{{ isset(@errors['fname'])}}">
-                                <span class="err">{{ @errors['fname'] }}</span>
+                                <span class="err text-danger">{{ @errors['fname'] }}</span>
                             </check>
                         </div>
                         <!--Last Name-->
@@ -29,7 +29,7 @@
                             <label class="form-label" for="lname">Last Name</label>
                             <input type="text" class="form-control" name="lname" id="lname" placeholder="Smith" required>
                             <check if="{{ isset(@errors['lname'])}}">
-                                <span class="err">{{ @errors['lname'] }}</span>
+                                <span class="err text-danger">{{ @errors['lname'] }}</span>
                             </check>
                         </div>
                     </div>
@@ -37,6 +37,9 @@
                     <div class="form-group">
                         <label class="form-label" for="email">Email address</label>
                         <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="my_email@gmail.com" required>
+                        <check if="{{ isset(@errors['email'])}}">
+                            <span class="err text-danger">{{ @errors['email'] }}</span>
+                        </check>
                     </div>
                     <div class="row row-cols-md-2">
                         <!--State-->
@@ -101,6 +104,9 @@
                         <div class="form-group">
                             <label class="form-label" for="phone">Phone</label>
                             <input type="text" name="phone" id="phone" class="form-control" data-mdb-input-mask="+48 999-999-999" required/>
+                            <check if="{{ isset(@errors['phone'])}}">
+                                <span class="err text-danger">{{ @errors['phone'] }}</span>
+                            </check>
                         </div>
                     </div>
                     <!--Mailing Lists-->

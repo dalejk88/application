@@ -15,4 +15,16 @@ class DataLayer
             echo $e->getMessage();
         }
     }
+
+    static function getJobs()
+    {
+        return array("JavaScript", "PHP", "Java", "Python", "HTML",
+            "CSS", "ReactJS", "NodeJs");
+    }
+
+    static function getVerticals()
+    {
+        return array("SaaS", "Health tech", "Ag tech", "HR tech",
+            "Industrial tech", "Cybersecurity");
+    }
 }

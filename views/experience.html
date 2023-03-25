@@ -10,28 +10,33 @@
         <h4>Green River Corn Dogs</h4>
         <p>Auburn Washington, Unpaid, 17.5 weeks</p>
     </div>
-    <form class="body">
+    <form class="body" action="#" method="post">
         <div class="p-3 m-3">
             <h1 class="spacer">Experience</h1>
             <div class="row">
                 <div class="col-12 col-md-8">
+                    <!--Bio-->
                     <div class="form-group h-100">
                         <label class="form-label" for="bio">Biography</label>
-                        <textarea class="form-control h-75" id="bio" placeholder="Write about yourself"></textarea>
+                        <textarea class="form-control h-75" name="bio" id="bio" placeholder="Write about yourself"></textarea>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
+                    <!--Github-->
                     <div class="form-group">
                         <label class="form-label" for="github">Github Link</label>
-                        <input type="textarea" class="form-control" id="github" placeholder="github.com/my_github" required>
+                        <input type="text" class="form-control" name="github" id="github" placeholder="github.com/my_github" required>
+                        <check if="{{ isset(@errors['github'])}}">
+                            <span class="err text-danger">{{ @errors['github'] }}</span>
+                        </check>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Years Experience</label><br>
-                        <input type="radio" id="0-2" name="years" value="0-2" required>
+                        <input type="radio" id="0-2" name="experience" value="0-2" required>
                         <label class="form-label" for="0-2"> 0-2</label><br>
-                        <input type="radio" id="2-4" name="years" value="2-4" required>
+                        <input type="radio" id="2-4" name="experience" value="2-4" required>
                         <label class="form-label" for="2-4"> 2-4</label><br>
-                        <input type="radio" id="4+" name="years" value="4+" required>
+                        <input type="radio" id="4+" name="experience" value="4+" required>
                         <label class="form-label" for="4+"> 4+</label><br>
                     </div>
                     <div class="form-group">
