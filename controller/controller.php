@@ -143,12 +143,13 @@ class Controller
         echo '</pre>';
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $condString = $_POST['jobs'];
-            $_SESSION['newApplicant']->setSelectionsJobs($condString);
-
-            $condString = $_POST['verticals'];
-            $_SESSION['newApplicant']->setSelectionsVerticals($condString);
+            // Set mailing lists only for Applicants subscribed to lists
+            if (get_class($_SESSION['newApplicant']) == "Applicant_SubscribedToLists") {
+                $jobsArr = $_POST['jobs'];
+                $_SESSION['newApplicant']->setSelectionsJobs($jobsArr);
+                $vertArr = $_POST['verticals'];
+                $_SESSION['newApplicant']->setSelectionsVerticals($vertArr);
+            }
 
             //Redirect to summary page
             //if there are no errors
@@ -168,10 +169,6 @@ class Controller
 
     function summary()
     {
-        echo '<pre>';
-        Print_r($_SESSION);
-        echo '</pre>';
-
         // Instantiate a view
         $view = new Template();
         echo $view->render("views/summary.html");

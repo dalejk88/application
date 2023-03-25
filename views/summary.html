@@ -11,15 +11,26 @@
         <p>Auburn Washington, Unpaid, 17.5 weeks</p>
     </div>
     <form class="body">
-        <div class="p-3 m-3">
-            <p>Name: {{@SESSION.newApplicant->getFname() }} {{@SESSION.newApplicant->getLname()}} </p>
-            <p>Email: {{@SESSION.newApplicant->getEmail() }}</p>
-            <p>State: {{@SESSION.newApplicant->getState() }}</p>
-            <p>Phone: {{@SESSION.newApplicant->getPhone() }}</p>
-            <p>Github Link: {{@SESSION.newApplicant->getGithub() }}</p>
-            <p>Experience: {{@SESSION.newApplicant->getExperience() }} Years</p>
-            <p>Willing to Relocate: {{@SESSION.newApplicant->getRelocate() }}</p>
+        <div class="p-3 m-3 row">
+            <div class="col-md-6 col-12">
+                <p>Name: {{ @SESSION.newApplicant->getFname() }} {{ @SESSION.newApplicant->getLname() }} </p>
+                <p>Email: {{ @SESSION.newApplicant->getEmail() }}</p>
+                <p>State: {{ @SESSION.newApplicant->getState() }}</p>
+                <p>Phone: {{ @SESSION.newApplicant->getPhone() }}</p>
+                <p>Github Link: {{ @SESSION.newApplicant->getGithub() }}</p>
+                <p>Experience: {{ @SESSION.newApplicant->getExperience() }} Years</p>
+                <p>Willing to Relocate: {{ @SESSION.newApplicant->getRelocate() }}</p>
+                <check if="{{ get_class($_SESSION['newApplicant']) == 'Applicant_SubscribedToLists' }}">
+                    <p>Mailing Lists: {{ implode(', ', @SESSION.newApplicant->getSelectionsJobs()) }},
+                    {{ implode(', ', @SESSION.newApplicant->getSelectionsVerticals()) }}</p>
+                </check>
+            </div>
+            <div class="col-md-6 col-12">
+                <img src="images/applicant-photo.png" alt="Green applicant photo placeholder">
+            </div>
         </div>
     </form>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+</html>
