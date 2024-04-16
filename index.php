@@ -1,6 +1,10 @@
 <?php
-// 328/application/index.php
-// This is my controller
+/*
+ * 328/application/index.php
+ * Author: Dale Kanikkeberg
+ * Date: April 15, 2024
+ * Description: Controller for the job application site
+ */
 
 // Turn on error reporting
 ini_set('display_errors', 1);
