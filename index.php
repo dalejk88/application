@@ -81,6 +81,21 @@ $f3->route('GET|POST /experience', function($f3) {
 // Define a mailing route
 $f3->route('GET|POST /mailing', function($f3) {
     var_dump ($f3->get("SESSION"));
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        // Get the data from the POST array
+        $softwareDevJobs = array($_POST['softwareDevJobs']);
+        $industryVerticals = array($_POST['industryVerticals']);
+
+        // If the data is valid
+        if (true) {
+            // Add the data to the session array
+            $f3->set('SESSION.softwareDevJobs', $softwareDevJobs);
+            $f3->set('SESSION.industryVerticals', $industryVerticals);
+
+            // Send the user to the next form
+            $f3->reroute("summary");
+        }
+    }
     // Render a view page
     $view = new Template();
     echo $view->render('views/mailing.html');
