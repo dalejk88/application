@@ -79,7 +79,8 @@ $f3->route('GET|POST /experience', function($f3) {
 });
 
 // Define a mailing route
-$f3->route('GET /mailing', function() {
+$f3->route('GET|POST /mailing', function($f3) {
+    var_dump ($f3->get("SESSION"));
     // Render a view page
     $view = new Template();
     echo $view->render('views/mailing.html');
