@@ -30,5 +30,12 @@ $f3->route('GET /info', function() {
     echo $view->render('views/info.html');
 });
 
+// Define an experience route
+$f3->route('GET /experience', function() {
+    // Render a view page
+    $view = new Template();
+    echo $view->render('views/experience.html');
+});
+
 // Run Fat-Free
 $f3->run();
