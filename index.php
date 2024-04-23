@@ -24,14 +24,36 @@ $f3->route('GET /', function() {
 });
 
 // Define an information route
-$f3->route('GET /info', function() {
+$f3->route('GET|POST /info', function($f3) {
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        // Get the data from the POST array
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $email = $_POST['email'];
+        $state = $_POST['state'];
+        $phone = $_POST['phone'];
+
+        // If the data is valid
+        if (true) {
+            // Add the data to the session array
+            $f3->set('SESSION.firstName', $firstName);
+            $f3->set('SESSION.lastName', $lastName);
+            $f3->set('SESSION.email', $email);
+            $f3->set('SESSION.state', $state);
+            $f3->set('SESSION.phone', $phone);
+
+            // Send the user to the next form
+            $f3->reroute("experience");
+        }
+    }
     // Render a view page
     $view = new Template();
     echo $view->render('views/info.html');
 });
 
 // Define an experience route
-$f3->route('GET /experience', function() {
+$f3->route('GET /experience', function($f3) {
+    var_dump ($f3->get("SESSION"));
     // Render a view page
     $view = new Template();
     echo $view->render('views/experience.html');
