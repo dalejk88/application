@@ -9,6 +9,12 @@ h2 {
     padding-top: 20px;
 }
 
+button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
 #apply {
     margin-bottom: 20px;
 }
