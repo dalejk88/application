@@ -1,0 +1,33 @@
+<!--
+    328/application/views/summary.html
+    Author: Dale Kanikkeberg
+    Date: April 22, 2024
+    Description: Displays a summary of information collected
+        from the previous three pages: info, experience, and mailing
+-->
+<include href="views/header.html"></include>
+
+<!-- Form -->
+<div class="container">
+    <div class="row mt-5">
+        <p>Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</p>
+        <hr>
+        <p>Email: {{ @SESSION.email }}</p>
+        <hr>
+        <p>State: {{ @SESSION.state }}</p>
+        <hr>
+        <p>Phone: {{ @SESSION.phone }}</p>
+        <hr>
+        <p>GitHub Link: {{ @SESSION.githubLink }}</p>
+        <hr>
+        <p>Experience: {{ @SESSION.yearsExperience }} years</p>
+        <hr>
+        <p>Willing To Relocate: {{ @SESSION.relocate }}</p>
+        <hr>
+
+        <p>Mailing Lists: {{ @SESSION.jobOpenings }}</p>
+        <hr>
+    </div>
+</div>
+</body>
+</html>
