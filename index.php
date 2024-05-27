@@ -32,7 +32,7 @@ $f3->route('GET|POST /info', function($f3) {
         $lastName = "";
         $email = "";
         $state = $_POST['state'];
-        $phone = $_POST['phone'];
+        $phone = "";
 
         // If the data is valid
         // Get the data from the post array
@@ -57,6 +57,13 @@ $f3->route('GET|POST /info', function($f3) {
         }
         else {
             $f3->set('errors["email"]', 'Please enter a valid email');
+        }
+        // Phone
+        if (Validate::validPhone($_POST['phone'])) {
+            $phone = $_POST['phone'];
+        }
+        else {
+            $f3->set('errors["phone"]', 'Please enter a valid phone number');
         }
 
         // Add the data to the session array
@@ -89,15 +96,18 @@ $f3->route('GET|POST /experience', function($f3) {
         $relocate = $_POST['relocate'];
 
         // If the data is valid
-        if (true) {
-            // Add the data to the session array
-            $f3->set('SESSION.biography', $biography);
-            $f3->set('SESSION.githubLink', $githubLink);
-            $f3->set('SESSION.yearsExperience', $yearsExperience);
-            $f3->set('SESSION.relocate', $relocate);
+        // Get the data from the post array
 
-            // Send the user to the next form
-            $f3->reroute("mailing");
+        // Add the data to the session array
+        $f3->set('SESSION.biography', $biography);
+        $f3->set('SESSION.githubLink', $githubLink);
+        $f3->set('SESSION.yearsExperience', $yearsExperience);
+        $f3->set('SESSION.relocate', $relocate);
+
+        // If there are no errors,
+        // Send the user to the next form
+        if(empty($f3->get('errors'))) {
+            $f3->reroute('mailing');
         }
     }
     // Render a view page

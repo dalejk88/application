@@ -97,6 +97,9 @@
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input type="tel" class="form-control" id="phone" name="phone">
+                        <check if="{{ isset(@errors['phone']) }}">
+                            <span class="err">{{ @errors['phone'] }}</span>
+                        </check>
                     </div>
                 </div>
             </div>
