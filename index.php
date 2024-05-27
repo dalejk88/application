@@ -13,6 +13,7 @@ error_reporting(E_ALL);
 // Require necessary files
 require_once ('vendor/autoload.php');
 require_once ('model/validate.php');
+require_once ('model/data-layer.php');
 
 // Instantiate the F3 Base class
 $f3 = Base::instance();
@@ -91,12 +92,28 @@ $f3->route('GET|POST /experience', function($f3) {
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // Get the data from the POST array
         $biography = $_POST['biography'];
-        $githubLink = $_POST['githubLink'];
-        $yearsExperience = $_POST['yearsExperience'];
+        $githubLink = "";
+        $yearsExperience = "";
         $relocate = $_POST['relocate'];
 
         // If the data is valid
         // Get the data from the post array
+
+        // GitHub
+        if (Validate::validGithub($_POST['githubLink'])) {
+            $githubLink = $_POST['githubLink'];
+        }
+        else {
+            $f3->set('errors["githubLink"]', 'Please enter a valid link');
+        }
+
+        // Experience
+        if (Validate::validExperience($_POST['yearsExperience'])) {
+            $yearsExperience = $_POST['yearsExperience'];
+        }
+        else {
+            $f3->set('errors["yearsExperience"]', 'Please select a valid option');
+        }
 
         // Add the data to the session array
         $f3->set('SESSION.biography', $biography);

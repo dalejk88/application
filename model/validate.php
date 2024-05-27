@@ -24,4 +24,19 @@ class Validate
     {
         return is_numeric($phone);
     }
+
+    // Return true if GitHub link is valid
+    static function validGithub($github)
+    {
+        if (!filter_var($github, FILTER_VALIDATE_URL)) {
+            return false;
+        }
+        return true;
+    }
+
+    // Return true if experience is a valid value
+    static function validExperience($experience)
+    {
+        return in_array($experience, DataLayer::getExperience());
+    }
 }
