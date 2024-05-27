@@ -29,19 +29,34 @@ $f3->route('GET|POST /info', function($f3) {
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // Get the data from the POST array
         $firstName = "";
-        $lastName = $_POST['lastName'];
-        $email = $_POST['email'];
+        $lastName = "";
+        $email = "";
         $state = $_POST['state'];
         $phone = $_POST['phone'];
 
         // If the data is valid
         // Get the data from the post array
-        //var_dump($_POST);
+
+        // First Name
         if (Validate::validName($_POST['firstName'])) {
             $firstName = $_POST['firstName'];
         }
         else {
-            $f3->set('errors["firstName"]', 'Please enter a name');
+            $f3->set('errors["firstName"]', 'Please enter a valid name');
+        }
+        // Last Name
+        if (Validate::validName($_POST['lastName'])) {
+            $lastName = $_POST['lastName'];
+        }
+        else {
+            $f3->set('errors["lastName"]', 'Please enter a valid name');
+        }
+        // Email
+        if (Validate::validEmail($_POST['email'])) {
+            $email = $_POST['email'];
+        }
+        else {
+            $f3->set('errors["email"]', 'Please enter a valid email');
         }
 
         // Add the data to the session array
