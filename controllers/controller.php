@@ -83,7 +83,6 @@ class Controller
 
     function experience()
     {
-        var_dump ( $this->_f3->get('SESSION') );
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // Get the data from the POST array
             $biography = $_POST['biography'];
@@ -138,7 +137,6 @@ class Controller
 
     function mailing()
     {
-        var_dump ( $this->_f3->get('SESSION') );
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $applicant = $this->_f3->get('SESSION.applicant');
 
@@ -164,7 +162,8 @@ class Controller
 
     function summary()
     {
-        var_dump ( $this->_f3->get('SESSION') );
+        //var_dump ( $this->_f3->get('SESSION') );
+
         // Render a view page
         $view = new Template();
         echo $view->render('views/summary.html');
