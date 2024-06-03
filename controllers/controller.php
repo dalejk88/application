@@ -60,6 +60,8 @@ class Controller
                 $this->_f3->set('errors["phone"]', 'Please enter a valid phone number');
             }
 
+            // Create a new Applicant to store variables
+            // Applicant_SubscribedToLists if mailingLists is checked
             if (isset($_POST['mailingLists'])) {
                 $applicant = new Applicant_SubscribedToLists($firstName, $lastName, $email, $state, $phone);
                 $this->_f3->set('SESSION.applicant', $applicant);
@@ -117,7 +119,12 @@ class Controller
             // If there are no errors,
             // Send the user to the next form
             if(empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('mailing');
+                // Send to mailing if subscribing to lists
+                if ($this->_f3->get('SESSION.applicant') instanceof Applicant_SubscribedToLists) {
+                    $this->_f3->reroute('mailing');
+                } else {
+                    $this->_f3->reroute('summary');
+                }
             }
         }
         // Render a view page
