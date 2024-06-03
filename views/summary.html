@@ -24,7 +24,10 @@
         <hr>
         <p>Willing To Relocate: {{ @SESSION.applicant->getRelocate() }}</p>
         <hr>
-        <p>Mailing Lists: {{ @SESSION.jobOpenings }}</p>
+        <p>Mailing Lists:
+            {{ implode(', ', @SESSION.applicant->getSelectionsJobs()) }},
+            {{ implode(', ', @SESSION.applicant->getSelectionsVerticals()) }}
+        </p>
         <hr>
         <button type="submit" class="btn btn-primary">Submit My Application!</button>
     </div>
