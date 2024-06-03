@@ -17,12 +17,11 @@ require_once ('model/data-layer.php');
 
 // Instantiate the F3 Base class
 $f3 = Base::instance();
+$con = new Controller($f3);
 
 // Define a default route
 $f3->route('GET /', function() {
-    // Render a view page
-    $view = new Template();
-    echo $view->render('views/home.html');
+    $GLOBALS['con']->home();
 });
 
 // Define an information route
