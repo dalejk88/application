@@ -60,12 +60,13 @@ class Controller
                 $this->_f3->set('errors["phone"]', 'Please enter a valid phone number');
             }
 
-            // Add the data to the session array
-            $this->_f3->set('SESSION.firstName', $firstName);
-            $this->_f3->set('SESSION.lastName', $lastName);
-            $this->_f3->set('SESSION.email', $email);
-            $this->_f3->set('SESSION.state', $state);
-            $this->_f3->set('SESSION.phone', $phone);
+            if (isset($_POST['mailingLists'])) {
+                $applicant = new Applicant_SubscribedToLists($firstName, $lastName, $email, $state, $phone);
+                $this->_f3->set('SESSION.applicant', $applicant);
+            } else {
+                $applicant = new Applicant($firstName, $lastName, $email, $state, $phone);
+                $this->_f3->set('SESSION.applicant', $applicant);
+            }
 
             // If there are no errors,
             // Send the user to the next form
@@ -80,6 +81,7 @@ class Controller
 
     function experience()
     {
+        var_dump ( $this->_f3->get('SESSION') );
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // Get the data from the POST array
             $biography = $_POST['biography'];
