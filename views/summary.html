@@ -10,19 +10,19 @@
 <!-- Form -->
 <div class="container">
     <div class="row mt-5">
-        <p>Name: {{ @SESSION.firstName }} {{ @SESSION.lastName }}</p>
+        <p>Name: {{ @SESSION.applicant->getFname() }} {{ @SESSION.applicant->getLname() }}</p>
         <hr>
-        <p>Email: {{ @SESSION.email }}</p>
+        <p>Email: {{ @SESSION.applicant->getEmail() }}</p>
         <hr>
-        <p>State: {{ @SESSION.state }}</p>
+        <p>State: {{ @SESSION.applicant->getState() }}</p>
         <hr>
-        <p>Phone: {{ @SESSION.phone }}</p>
+        <p>Phone: {{ @SESSION.applicant->getPhone() }}</p>
         <hr>
-        <p>GitHub Link: {{ @SESSION.githubLink }}</p>
+        <p>GitHub Link: {{ @SESSION.applicant->getGithub() }}</p>
         <hr>
-        <p>Experience: {{ @SESSION.yearsExperience }} years</p>
+        <p>Experience: {{ @SESSION.applicant->getExperience() }} years</p>
         <hr>
-        <p>Willing To Relocate: {{ @SESSION.relocate }}</p>
+        <p>Willing To Relocate: {{ @SESSION.applicant->getRelocate() }}</p>
         <hr>
         <p>Mailing Lists: {{ @SESSION.jobOpenings }}</p>
         <hr>
