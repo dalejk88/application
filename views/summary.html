@@ -18,12 +18,16 @@
         <hr>
         <p>Phone: {{ @SESSION.applicant->getPhone() }}</p>
         <hr>
-        <p>GitHub Link: {{ @SESSION.applicant->getGithub() }}</p>
-        <hr>
+        <check if="{{ !empty(@SESSION.applicant->getGithub()) }}">
+            <p>GitHub Link: {{ @SESSION.applicant->getGithub() }}</p>
+            <hr>
+        </check>
         <p>Experience: {{ @SESSION.applicant->getExperience() }} years</p>
         <hr>
-        <p>Willing To Relocate: {{ @SESSION.applicant->getRelocate() }}</p>
-        <hr>
+        <check if="{{ @SESSION.applicant->getRelocate() }}">
+            <p>Willing To Relocate: {{ @SESSION.applicant->getRelocate() }}</p>
+            <hr>
+        </check>
         <check if="{{ @SESSION.applicant instanceof Applicant_SubscribedToLists }}">
             <p>Mailing Lists:
                 {{ implode(', ', @SESSION.applicant->getSelectionsJobs()) }},

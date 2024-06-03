@@ -88,17 +88,18 @@ class Controller
             $biography = $_POST['biography'];
             $githubLink = "";
             $yearsExperience = "";
-            $relocate = $_POST['relocate'];
+            $relocate = "";
 
             // If the data is valid
             // Get the data from the post array
 
             // GitHub
-            if (Validate::validGithub($_POST['githubLink'])) {
-                $githubLink = $_POST['githubLink'];
-            }
-            else {
-                $this->_f3->set('errors["githubLink"]', 'Please enter a valid link');
+            if (!empty($_POST['githubLink'])) {
+                if (Validate::validGithub($_POST['githubLink'])) {
+                    $githubLink = $_POST['githubLink'];
+                } else {
+                    $this->_f3->set('errors["githubLink"]', 'Please enter a valid link');
+                }
             }
 
             // Experience
@@ -107,6 +108,11 @@ class Controller
             }
             else {
                 $this->_f3->set('errors["yearsExperience"]', 'Please select a valid option');
+            }
+
+            // Relocate
+            if (isset($_POST['relocate'])) {
+                $relocate = $_POST['relocate'];
             }
 
             // Add the data to the session array
