@@ -140,19 +140,22 @@ class Controller
     {
         var_dump ( $this->_f3->get('SESSION') );
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $applicant = $this->_f3->get('SESSION.applicant');
+
             // Get the data from the POST array
-            if (isset($_POST["jobOpenings"])) {
-                $jobOpenings = implode(", ",$_POST["jobOpenings"]);
+            if (isset($_POST["selectionsJobs"])) {
+                $applicant->setSelectionsJobs($_POST["selectionsJobs"]);
+            }
+            if (isset($_POST["selectionsVerticals"])) {
+                $applicant->setSelectionsVerticals($_POST["selectionsVerticals"]);
+                //$selectionsVerticals = implode(", ",$_POST["selectionsVerticals"]);
             }
 
-            // If the data is valid
-            if (true) {
-                // Add the data to the session array
-                $this->_f3->set('SESSION.jobOpenings', $jobOpenings);
+            // Add the data to the session array
+            $this->_f3->set('SESSION.applicant', $applicant);
 
-                // Send the user to the next form
-                $this->_f3->reroute("summary");
-            }
+            // Send the user to the next form
+            $this->_f3->reroute("summary");
         }
         // Render a view page
         $view = new Template();
