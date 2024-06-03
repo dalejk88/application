@@ -24,11 +24,13 @@
         <hr>
         <p>Willing To Relocate: {{ @SESSION.applicant->getRelocate() }}</p>
         <hr>
-        <p>Mailing Lists:
-            {{ implode(', ', @SESSION.applicant->getSelectionsJobs()) }},
-            {{ implode(', ', @SESSION.applicant->getSelectionsVerticals()) }}
-        </p>
-        <hr>
+        <check if="{{ @SESSION.applicant instanceof Applicant_SubscribedToLists }}">
+            <p>Mailing Lists:
+                {{ implode(', ', @SESSION.applicant->getSelectionsJobs()) }},
+                {{ implode(', ', @SESSION.applicant->getSelectionsVerticals()) }}
+            </p>
+            <hr>
+        </check>
         <button type="submit" class="btn btn-primary">Submit My Application!</button>
     </div>
 </div>
