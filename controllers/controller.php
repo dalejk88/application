@@ -111,10 +111,14 @@ class Controller
             }
 
             // Add the data to the session array
-            $this->_f3->set('SESSION.biography', $biography);
-            $this->_f3->set('SESSION.githubLink', $githubLink);
-            $this->_f3->set('SESSION.yearsExperience', $yearsExperience);
-            $this->_f3->set('SESSION.relocate', $relocate);
+            $applicant = $this->_f3->get('SESSION.applicant');
+
+            $applicant->setBio($biography);
+            $applicant->setGithub($githubLink);
+            $applicant->setExperience($yearsExperience);
+            $applicant->setRelocate($relocate);
+
+            $this->_f3->set('SESSION.applicant', $applicant);
 
             // If there are no errors,
             // Send the user to the next form
@@ -134,6 +138,7 @@ class Controller
 
     function mailing()
     {
+        var_dump ( $this->_f3->get('SESSION') );
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // Get the data from the POST array
             if (isset($_POST["jobOpenings"])) {
@@ -156,6 +161,7 @@ class Controller
 
     function summary()
     {
+        var_dump ( $this->_f3->get('SESSION') );
         // Render a view page
         $view = new Template();
         echo $view->render('views/summary.html');
